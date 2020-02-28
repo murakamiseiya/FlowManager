@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "AppForm";
+}
+
+@Scripts.Render("~/bundles/AppFormAjax")
+
+<div class="SideBar col-lg-2 hidden-xs" style="min-height:500px">
+
+    <p class="fontWhite">メニュー</p>
+
+    <div class="div-ajaxLoad divButton" data-category="AppFormList">申請一覧</div>
+    <div class="div-ajaxLoad divButton" data-category="ReAppForm">新規申請</div>
+</div>
+<div class="result col-lg-9" ></div>

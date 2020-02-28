@@ -1,0 +1,78 @@
+﻿@*
+    ///
+    /// ファイル名	: LoginPage.cshtml
+    /// 作成者		: murakami
+    /// 制作日		: 2020/1/30
+    /// 最終更新者	: なし
+    /// 最終更新日	: なし
+    ///
+    /// 更新履歴
+    /// 名前			日付		内容
+    /// murakami		2020/01/30	新規作成
+    ///
+*@
+
+
+@{
+    ViewBag.Title = "LoginPage";
+}
+@model FlowManager.Models.FormParam.LoginParam
+
+<br />
+<br />
+
+@* 背景 *@
+<div class="col-lg-6 col-lg-offset-3 LoginBackground">
+
+    <div class="row">
+        <h1 class="text-center LoginTitleFont" >-Login-</h1>
+    </div>
+
+    @using (Html.BeginForm("LoginCheck", "Login"))
+    {
+
+        @* ユーザID *@
+        <br />
+        <div class="form-group col-lg-offset-1 row">
+            <p class="LoginFont">
+                @Html.DisplayNameFor(loginParam => loginParam.userID)
+            </p>
+            <div class=" col-lg-10">
+                @Html.TextBoxFor(loginParam => loginParam.userID, new { @class = "form-control", placeholder = "ユーザID..." })
+
+                <div class="row col-lg-offset-0">
+                    @Html.ValidationMessageFor(loginParam => loginParam.userID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        @* パスワード *@
+        <div class="row col-lg-offset-1">
+            <p class="LoginFont">
+                @Html.DisplayNameFor(loginParam => loginParam.password)
+            </p>
+            <div class="col-lg-10">
+                @Html.PasswordFor(loginParam => loginParam.password, new { @class = "form-control", placeholder = "パスワード..." })
+
+                <div class="row col-lg-offset-0">
+                    @Html.ValidationMessageFor(loginParam => loginParam.password, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+
+
+        @* CSRF対策 ワンタイムトークン *@
+        @Html.AntiForgeryToken();
+        <br />
+        <br />
+        <div class="row col-lg-offset-1">
+            <input class="btn btn-warning col-lg-10 " type="submit" value="ログイン" />
+        </div>
+    }
+
+    <br />
+</div>
+
+
+
+

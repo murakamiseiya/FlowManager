@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "NewAppForm";
+}
+
+@* 必要ファイル読み込み *@
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/bootstrap")
+
+@model FlowManager.Models.FormParam.AppFormModel
+<br />
+
+@using (Html.BeginForm())
+{
+    <table class="table table-bordered ">
+        <tr>
+            <th class="col-lg-2 info">@Html.DisplayNameFor(appFormModel => appFormModel.ImplementationDate)</th>
+            <td class="col-lg-10 active" colspan="4">@Html.TextBoxFor(appFormModel => appFormModel.ImplementationDate, new { @class = "col-lg-12" })</td>
+        </tr>
+        <tr>
+            <th class="col-lg-2 info">@Html.DisplayNameFor(appFormModel => appFormModel.FormName)</th>
+            <td class="col-lg-10 active" colspan="4">@Html.TextBoxFor(appFormModel => appFormModel.FormName, new { @class = "col-lg-12" })</td>
+
+        </tr>
+        <tr>
+            <th class="col-lg-2 info">@Html.DisplayNameFor(appFormModel => appFormModel.contents)</th>
+            <td class="col-lg-10 active" colspan="4">@Html.TextAreaFor(appFormModel => appFormModel.contents, new { @class = "col-lg-12" })</td>
+        </tr>
+        <tr>
+            <th class="text-center info" colspan="5">申請詳細</th>
+        </tr>
+        <tr>
+            <th class="col-lg-8 text-center info" colspan="2">@Html.DisplayNameFor(appFormModel => appFormModel.ditails[0].contents)</th>
+            <th class="col-lg-1 info">@Html.DisplayNameFor(appFormModel => appFormModel.ditails[0].productionAmount)</th>
+            <th class="col-lg-2 info">申請種目</th>
+            <th class="col-lg-1 info">削除</th>
+        </tr>
+        <tr>
+            <td class="col-lg-9 active" colspan="2">@Html.TextBoxFor(appFormModel => appFormModel.ditails[0].contents, new { @class = "col-lg-12" })</td>
+            <td class="col-lg-1 active">@Html.TextBoxFor(appFormModel => appFormModel.ditails[0].productionAmount, new { @class = "col-lg-12" })</td>
+            <td class="col-lg-2 active"><select class="col-lg-12"><option style="font-size:7px">公共交通機関</option></select></td>
+            <td class="col-lg-1 active"><button>×</button></td>
+        </tr>
+        <tr>
+            <td class="col-lg-9 active" colspan="2">@Html.TextBoxFor(appFormModel => appFormModel.ditails[0].contents, new { @class = "col-lg-12" })</td>
+            <td class="col-lg-1 active">@Html.TextBoxFor(appFormModel => appFormModel.ditails[0].productionAmount, new { @class = "col-lg-12" })</td>
+            <td class="col-lg-2 active"><select class="col-lg-12"><option>飲食代</option></select></td>
+            <td class="col-lg-1 active"><button>×</button></td>
+        </tr>
+    </table>
+    <button class="col-lg-offset-11">追加</button>
+
+    <br />
+
+    <input class="col-lg-offset-5 col-lg-2" type="submit" value="申請する" />
+}
+
+

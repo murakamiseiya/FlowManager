@@ -1,0 +1,67 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+*/
+
+/*全体の背景色*/
+
+.background {
+    background-color: rgb(192, 192, 192);
+}
+
+/*ログイン画面の背景色*/
+.LoginBackground {
+    min-height: 55vh;
+    background-color: rgba( 255, 255, 255, 0.9 );
+}
+
+/*ログインタイトルのフォント*/
+.LoginTitleFont {
+    color: rgb(128, 128, 128);
+}
+
+/*ログイン画面に表示するフォント*/
+.LoginFont {
+    font-size: 25px;
+}
+
+/*　サイドバー　全体　*/
+.SideBar {
+    background-color: rgb( 0, 0, 0 );
+}
+
+/* サイドバーのボタンの設定 */
+.divButton {
+    color: rgb( 192, 192, 192 );
+    font-size:20px ;
+}
+.divButton:hover {
+    color: rgb( 230, 230, 230 );
+    font-size:30px ;
+}
+
+.fontWhite{
+    color:white ;
+}

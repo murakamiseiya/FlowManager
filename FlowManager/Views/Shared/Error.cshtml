@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width" />
+    <title>エラー</title>
+</head>
+<body>
+    <hgroup>
+        <h1 class="text-center">エラーが出ました。</h1>
+        <h2 class="text-center">ログイン画面からやり直してください。</h2>
+    </hgroup>
+    @using (Html.BeginForm("LoginPage", "Login"))
+    {
+        <input class="btn center-block" type="submit" value="ログイン画面へ" />
+    }
+    </body>
+</html>

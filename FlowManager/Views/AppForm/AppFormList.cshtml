@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "AppFormList";
+}
+
+@* 必要ファイル読み込み *@
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/bootstrap")
+@model FlowManager.Models.FormParam.AppFormModel
+
+<script type="text/javascript">
+    $(function () {
+    $('#table').on('click-row.bs.table', function (element, row) {
+        console.log('[click-row.bs.table] row=' + JSON.stringify(row));
+    })
+});
+</script>
+
+<br />
+<table id="table" class="table table-hover table-clickable">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(appFormModel => appFormModel.ImplementationDate)</th>
+            <th>@Html.DisplayNameFor(appFormModel => appFormModel.FormName)</th>
+            <th>申請ユーザ</th>
+            <th>次の承認権限者</th>
+        </tr>
+    </thead>
+    <tr data-href="遷移データ">
+        <td>2020年2月2日</td>
+        <td>経費申請</td>
+        <td>村上</td>
+        <td>本社経理部</td>
+    </tr>
+    <tr>
+        <td>2020年2月7日</td>
+        <td>交通費</td>
+        <td>徳井</td>
+        <td>横浜工場所長</td>
+    </tr>
+
+</table>

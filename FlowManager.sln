@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowManager", "FlowManager\FlowManager.csproj", "{F848EDD3-EEEE-44CF-A0EB-699C0701E3F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowManager.Tests", "FlowManager.Tests\FlowManager.Tests.csproj", "{7E34032E-B3B5-4EFD-92D2-CE0B130FF93A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F848EDD3-EEEE-44CF-A0EB-699C0701E3F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F848EDD3-EEEE-44CF-A0EB-699C0701E3F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F848EDD3-EEEE-44CF-A0EB-699C0701E3F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F848EDD3-EEEE-44CF-A0EB-699C0701E3F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E34032E-B3B5-4EFD-92D2-CE0B130FF93A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E34032E-B3B5-4EFD-92D2-CE0B130FF93A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E34032E-B3B5-4EFD-92D2-CE0B130FF93A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E34032E-B3B5-4EFD-92D2-CE0B130FF93A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8AB5741-6808-4C8F-9CC4-54A7498226EC}
+	EndGlobalSection
+EndGlobal

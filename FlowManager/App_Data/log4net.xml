@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <log4net>
+
+    <!-- デバッグ用：分割ファイル出力 -->
+    <appender name="DebugLogDailyAppender" type="log4net.Appender.RollingFileAppender">
+
+      <!-- ファイル名は日付ごと -->
+      <param name="File" value="./Logs/" />
+      <param name="DatePattern" value='yyyyMMdd"_Debug.log"' />
+      <param name="RollingStyle" value="date" />
+      <param name="StaticLogFileName" value="false" />
+
+      <param name="AppendToFile" value="true" />
+
+      <filter type="log4net.Filter.LevelRangeFilter">
+        <!-- <param name="LevelMax" value="FATAL" /> -->
+        <param name="LevelMin" value="TRACE" />
+      </filter>
+
+      <param name="MaximumFileSize" value="10MB" />
+      <param name="MaxSizeRollBackups" value="10" />
+
+      <layout type="log4net.Layout.PatternLayout">
+        <ConversionPattern value="%date [%-5level] [%class] [%method] %message%n" />
+      </layout>
+    </appender>
+
+    <root>
+      <level value="Debug" />
+      <appender-ref ref="DebugLogDailyAppender" />
+    </root>
+
+  </log4net>
+</configuration>

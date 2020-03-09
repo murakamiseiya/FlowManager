@@ -22,7 +22,7 @@ namespace FlowManager.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace FlowManager.Properties {
         ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FlowManager.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace FlowManager.Properties {
         ///   現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,20 +61,83 @@ namespace FlowManager.Properties {
         }
         
         /// <summary>
-        ///   パスワード に類似しているローカライズされた文字列を検索します。
+        ///   ログイン に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Password {
+        public static string Login_LoginButton {
             get {
-                return ResourceManager.GetString("Password", resourceCulture);
+                return ResourceManager.GetString("Login_LoginButton", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   ユーザ名 に類似しているローカライズされた文字列を検索します。
+        ///   {0}は{1}文字以内で入力してください。 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string UserName {
+        public static string Login_MaxLength_ErrorMsg {
             get {
-                return ResourceManager.GetString("UserName", resourceCulture);
+                return ResourceManager.GetString("Login_MaxLength_ErrorMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   パスワード に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Login_Password {
+            get {
+                return ResourceManager.GetString("Login_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   パスワード... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Login_PasswordPlaceholder {
+            get {
+                return ResourceManager.GetString("Login_PasswordPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   英数字のみ使用可能です。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Login_RegularExpression_ErrorMsg {
+            get {
+                return ResourceManager.GetString("Login_RegularExpression_ErrorMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   {0}は必須項目です。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Login_Required_ErrorMsg {
+            get {
+                return ResourceManager.GetString("Login_Required_ErrorMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Login に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Login_Title {
+            get {
+                return ResourceManager.GetString("Login_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ユーザID に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Login_UserID {
+            get {
+                return ResourceManager.GetString("Login_UserID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ユーザID... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Login_UserIDPlaceholder {
+            get {
+                return ResourceManager.GetString("Login_UserIDPlaceholder", resourceCulture);
             }
         }
     }

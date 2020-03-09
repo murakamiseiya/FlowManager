@@ -117,31 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Login_LoginButton" xml:space="preserve">
-    <value>ログイン</value>
+  <data name="Target" xml:space="preserve">
+    <value>H4sIAAAAAAAEAM1YzW7bOBC+L7DvIOicmrFz6QZyi8SOF0bzh8rpdUFLY4dYitSSVBo/2x72kfoKHeqXlmxHToJikUs0mvlmOD8fR/7x73/B5+eEe0+gNJNi7A8Hp74HIpIxE+uxn5nVh4/+50+//xZcxcmz963SO7N6aCn02H80Jj0nREePkFA9SFikpJYrM4hkQmgsyej09A8yHBJACB+xPC/4mgnDEsgf8HEiRQSpySi/kTFwXcrxTZijerc0AZ3SCMb+jMvvN1TQNahBoT2YXl5EEWjtexecUQwpBL7yPSqENNRgwOcPGkKjpFiHKQooX2xSQL0V5RrKg5w36n3PdDqyZyKNYQUVZdrI5EjA4VmZJNI2f1Wq/TqJmMYrTLfZ2FPnqRz7mBCVZ8/32t7OJ1xZzZ2pru1OPOftSd0Z2ED278SbZNxkCsYCMqMoqt9nS86iL7BZyL9BjEXGuRsiBonvtgQoulcyBWU2X2FVBj6f+h7ZtiNtw9rMsSlONBfmbOR7t+icLjnUHeCcPjRSwZ8gQFED8T01BhQWcB5DnsOO95YvmyD7X+UR2w5Hyfdu6PM1iLV5HPsjnJ0Ze4a4EpRBPAiGg4c2RmWwI8jDju+p1t+lin+540vgOFgv5/gwStlJb4WZKMCyLVhTgGn9fCTUQxqjqTU/Eiogzbh1hxC5zlCG7VW6uZZrJhYWrCKxzkBiT5UzqcsabQdeAIdg2sP9l1nigDfRFMw4cIZ/V9x1hA0Nk4KHK74mewg7uKFpil3nEHgp8cKCvScfwuPZLCkwSKR3kFodbe0JBxhbqfUWXWOkM6a0wTLSJbVVm8RJR61Tjz25rtztSnmbxpoKVFb2/8LywH3mFKqF2CR2hmdNkJryY0MdncvwHdv8XqWcqh08OZE8S8Q+rj1k3TCfi9FI+yM1VOYiNdL+SA03uUiNtD+Sw08ulCPuj+WSlAvmyo/Iu8NTW5l35F20gLQaqN2zpNO0rVu3PQmHmKStUnuvGaXFHEE5xS/vg52xLlR8D9P0xGI70uFGG0gGVmEQ/sMnnOF5GwWsIVuBNsVigrfkcNTaJP8/Wx3ROuZ9V7tfvl4xm9YXF6hj7+HWRiWeqIoeqeqsNm9cmN4Lt70P5Ul56zb0GpDuLmQJwbzPLtQT6rhdqHtF91x0Di85BSNgzEuJ4Rex2tfFevTKFahLUAFxP2uDKWi2biDsR66AyE5+A1rpzMVKVinH47kRVSrtDgFDsQb0Qhm2opHB13ZlyFf+b5RnqHKVLCGei7vMpJm50BqSJd/6fgnIYf/5nrcdc3CX2if9HkfAMJltoztxmTEe13HPdrTRHgjbMCXVYFT4yYNw602NdCtFT6AyfVNIQViiWkCScgTTdyKkT/Ca2LDDrmFNo011z+wHebkQ22kPpoyuFU10idHY259qiP2t5tNP2pLaxt0RAAA=</value>
   </data>
-  <data name="Login_MaxLength_ErrorMsg" xml:space="preserve">
-    <value>{0}は{1}文字以内で入力してください。</value>
-  </data>
-  <data name="Login_Password" xml:space="preserve">
-    <value>パスワード</value>
-  </data>
-  <data name="Login_PasswordPlaceholder" xml:space="preserve">
-    <value>パスワード...</value>
-  </data>
-  <data name="Login_RegularExpression_ErrorMsg" xml:space="preserve">
-    <value>英数字のみ使用可能です。</value>
-  </data>
-  <data name="Login_Required_ErrorMsg" xml:space="preserve">
-    <value>{0}は必須項目です。</value>
-  </data>
-  <data name="Login_Title" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="Login_UserID" xml:space="preserve">
-    <value>ユーザID</value>
-  </data>
-  <data name="Login_UserIDPlaceholder" xml:space="preserve">
-    <value>ユーザID...</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>

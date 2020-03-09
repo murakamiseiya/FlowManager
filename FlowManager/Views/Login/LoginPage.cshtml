@@ -10,22 +10,23 @@
     /// 名前			日付		内容
     /// murakami		2020/01/30	新規作成
     ///
+
 *@
 
+@using FlowManager.Properties
 
 @{
-    ViewBag.Title = "LoginPage";
+    ViewBag.Title = Resources.Login_Title;
 }
-@model FlowManager.Models.FormParam.LoginParam
+@model FlowManager.Models.UserModel
 
-<br />
 <br />
 
 @* 背景 *@
 <div class="col-lg-6 col-lg-offset-3 LoginBackground">
 
     <div class="row">
-        <h1 class="text-center LoginTitleFont" >-Login-</h1>
+        <h1 class="text-center LoginTitleFont"> @Resources.Login_Title </h1>
     </div>
 
     @using (Html.BeginForm("LoginCheck", "Login"))
@@ -35,26 +36,26 @@
         <br />
         <div class="form-group col-lg-offset-1 row">
             <p class="LoginFont">
-                @Html.DisplayNameFor(loginParam => loginParam.userID)
+                @Html.DisplayNameFor(loginParam => loginParam.UserName)
             </p>
             <div class=" col-lg-10">
-                @Html.TextBoxFor(loginParam => loginParam.userID, new { @class = "form-control", placeholder = "ユーザID..." })
+                @Html.TextBoxFor(loginParam => loginParam.UserName, new { @class = "form-control", placeholder = Resources.Login_UserIDPlaceholder })
 
                 <div class="row col-lg-offset-0">
-                    @Html.ValidationMessageFor(loginParam => loginParam.userID, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(loginParam => loginParam.UserName, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
         @* パスワード *@
         <div class="row col-lg-offset-1">
             <p class="LoginFont">
-                @Html.DisplayNameFor(loginParam => loginParam.password)
+                @Html.DisplayNameFor(loginParam => loginParam.Password )
             </p>
             <div class="col-lg-10">
-                @Html.PasswordFor(loginParam => loginParam.password, new { @class = "form-control", placeholder = "パスワード..." })
+                @Html.PasswordFor(loginParam => loginParam.Password, new { @class = "form-control", placeholder = Resources.Login_PasswordPlaceholder })
 
                 <div class="row col-lg-offset-0">
-                    @Html.ValidationMessageFor(loginParam => loginParam.password, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(loginParam => loginParam.Password, "", new { @class = "text-danger" })
                 </div>
 
             </div>
@@ -66,7 +67,7 @@
         <br />
         <br />
         <div class="row col-lg-offset-1">
-            <input class="btn btn-warning col-lg-10 " type="submit" value="ログイン" />
+            <input class="btn btn-warning col-lg-10 " type="submit" value="@FlowManager.Properties.Resources.Login_LoginButton" />
         </div>
     }
 

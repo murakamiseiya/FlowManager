@@ -1,4 +1,15 @@
-﻿using System.Web;
+﻿///
+/// ファイル名	: BundleConfig.js
+/// 作成者		: murakami
+/// 制作日		: 2020/3/12
+/// 最終更新者	: なし
+/// 最終更新日	: なし
+///
+/// 更新履歴
+/// 名前			日付		内容
+/// murakami		2020/03/12	新規作成
+///
+using System.Web;
 using System.Web.Optimization;
 
 namespace FlowManager
@@ -16,6 +27,9 @@ namespace FlowManager
 
             bundles.Add(new ScriptBundle("~/bundles/AppFormAjax").Include(
                         "~/Scripts/AppFormAjax.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/AppFormElementTable").Include(
+            "~/Scripts/AppFormElementTable.js"));
 
             // 開発と学習には、Modernizr の開発バージョンを使用します。次に、実稼働の準備が
             // 運用の準備が完了したら、https://modernizr.com のビルド ツールを使用し、必要なテストのみを選択します。

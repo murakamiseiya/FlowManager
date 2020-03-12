@@ -1,4 +1,15 @@
-﻿
+﻿///
+/// ファイル名	: AppFormDetails.cshtml
+/// 作成者		: murakami
+/// 制作日		: 2020/3/12
+/// 最終更新者	: なし
+/// 最終更新日	: なし
+///
+/// 更新履歴
+/// 名前			日付		内容
+/// murakami		2020/03/12	新規作成
+///
+
 @{
     Layout = null;
     ViewBag.Title = "AppFormDetails";
@@ -11,7 +22,7 @@
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/bootstrap")
 
-@model FlowManager.Models.FormParam.AppFormModel
+@model FlowManager.Models.FormParam.AppFormViewModel
 
 <br />
 
@@ -26,27 +37,31 @@
 
     </tr>
     <tr>
-        <th class="col-lg-2 info">@Html.DisplayNameFor(appFormModel => appFormModel.contents)</th>
-        <td class="col-lg-10 active" colspan="3">@Html.DisplayFor(appFormModel => appFormModel.contents, new { @class = "col-lg-12" })</td>
+        @*
+            <th class="col-lg-2 info">@Html.DisplayNameFor(appFormModel => appFormModel.contents)</th>
+            <td class="col-lg-10 active" colspan="3">@Html.DisplayFor(appFormModel => appFormModel.contents, new { @class = "col-lg-12" })</td>
+        *@
     </tr>
     <tr>
         <th class="text-center info" colspan="4">申請詳細</th>
     </tr>
-    <tr>
-        <th class="col-lg-8 text-center info" colspan="2">@Html.DisplayNameFor(appFormModel => appFormModel.ditails[0].contents)</th>
-        <th class="col-lg-2 info">申請項目</th>
-        <th class="col-lg-2 info">@Html.DisplayNameFor(appFormModel => appFormModel.ditails[0].productionAmount)</th>
-    </tr>
-    <tr>
-        <td class="col-lg-8 active" colspan="2">@Html.DisplayFor(appFormModel => appFormModel.ditails[0].contents, new { @class = "col-lg-12" })</td>
-        <td class="col-lg-2 active">公共交通機関</td>
-        <td class="col-lg-2 active">@Html.DisplayFor(appFormModel => appFormModel.ditails[0].productionAmount, new { @class = "col-lg-12" })</td>
-    </tr>
-    <tr>
-        <td class="col-lg-8 active" colspan="2">@Html.DisplayFor(appFormModel => appFormModel.ditails[1].contents, new { @class = "col-lg-12" })</td>
-        <td class="col-lg-2 active">食事代</td>
-        <td class="col-lg-2 active">@Html.DisplayFor(appFormModel => appFormModel.ditails[1].productionAmount, new { @class = "col-lg-12" })</td>
-    </tr>
+    @*
+        <tr>
+            <th class="col-lg-8 text-center info" colspan="2">@Html.DisplayNameFor(appFormModel => appFormModel.ditails[0].contents)</th>
+            <th class="col-lg-2 info">申請項目</th>
+            <th class="col-lg-2 info">@Html.DisplayNameFor(appFormModel => appFormModel.ditails[0].productionAmount)</th>
+        </tr>
+        <tr>
+            <td class="col-lg-8 active" colspan="2">@Html.DisplayFor(appFormModel => appFormModel.ditails[0].contents, new { @class = "col-lg-12" })</td>
+            <td class="col-lg-2 active">公共交通機関</td>
+            <td class="col-lg-2 active">@Html.DisplayFor(appFormModel => appFormModel.ditails[0].productionAmount, new { @class = "col-lg-12" })</td>
+        </tr>
+        <tr>
+            <td class="col-lg-8 active" colspan="2">@Html.DisplayFor(appFormModel => appFormModel.ditails[1].contents, new { @class = "col-lg-12" })</td>
+            <td class="col-lg-2 active">食事代</td>
+            <td class="col-lg-2 active">@Html.DisplayFor(appFormModel => appFormModel.ditails[1].productionAmount, new { @class = "col-lg-12" })</td>
+        </tr>
+    *@
 </table>
 
 <br />
@@ -81,12 +96,14 @@
 @using (Html.BeginForm())
 {
     <div class="col-lg-offset-1">
-        <div class="row">
-            @Html.DisplayNameFor(appFormModel => appFormModel.comments[0].comment)
-        </div>
-        <div class="row">
-            @Html.TextAreaFor(appFormModel => appFormModel.comments[0].comment, new { @class = "col-lg-10"})
-        </div>
+        @*
+            <div class="row">
+                @Html.DisplayNameFor(appFormModel => appFormModel.comments[0].comment)
+            </div>
+            <div class="row">
+                @Html.TextAreaFor(appFormModel => appFormModel.comments[0].comment, new { @class = "col-lg-10"})
+            </div>
+        *@
         <br />
         <div class="row">
             <input class="btn btn-primary" type="submit" value="承認" />

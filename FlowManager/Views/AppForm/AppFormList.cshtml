@@ -1,4 +1,14 @@
-﻿
+﻿///
+/// ファイル名	: AppFormList.cshtml
+/// 作成者		: murakami
+/// 制作日		: 2020/3/12
+/// 最終更新者	: なし
+/// 最終更新日	: なし
+///
+/// 更新履歴
+/// 名前			日付		内容
+/// murakami		2020/03/12	新規作成
+///
 @{
     Layout = null;
     ViewBag.Title = "AppFormList";
@@ -10,14 +20,17 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/bootstrap")
-@model FlowManager.Models.FormParam.AppFormModel
+@model FlowManager.Models.FormParam.AppFormViewModel
+@using FlowManager.Models.FormParam
 
 <script type="text/javascript">
-    $(function () {
-    $('#table').on('click-row.bs.table', function (element, row) {
-        console.log('[click-row.bs.table] row=' + JSON.stringify(row));
-    })
-});
+    $(document).ready(function () {
+        // 行をクリックしたら
+        $('tr').click(function (event) {
+            //パスは アクション/クラス名
+            $('.result').load($(this).data('category'));
+        });
+    });
 </script>
 
 <br />
@@ -30,17 +43,15 @@
             <th>次の承認権限者</th>
         </tr>
     </thead>
-    <tr data-href="遷移データ">
-        <td>2020年2月2日</td>
-        <td>経費申請</td>
-        <td>村上</td>
-        <td>本社経理部</td>
-    </tr>
-    <tr>
-        <td>2020年2月7日</td>
-        <td>交通費</td>
-        <td>徳井</td>
-        <td>横浜工場所長</td>
-    </tr>
+
+    @foreach (AppFormViewModel appformModel in ViewBag.appFormViewModels)
+    {
+        <tr class="div-ajaxLoad" data-category="AppFormDetails/AppForm?appFormID=@appformModel.ID">
+            <td>@appformModel.ImplementationDate.ToLongDateString()</td>
+            <td>@appformModel.FormName</td>
+            <td>@appformModel.UserName</td>
+            <td>@appformModel.BelongName@appformModel.ManagerName</td>
+        </tr>
+    }
 
 </table>

@@ -19,15 +19,15 @@ using System.Web;
 
 namespace FlowManager.Models.DBAccess
 {
-    public class LoginContext : DbContext
+    public class UserContext : DbContext
     {
         public virtual DbSet<UserModel> UserModel_tbl { get; set; }
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public LoginContext()
-            : base("name=Login")
+        public UserContext()
+            : base("name=FlowManagerDB")
         {
         }
 
@@ -57,6 +57,24 @@ namespace FlowManager.Models.DBAccess
 
             //もし取得したレコードがなければnull
             if(userTable.ToList().Count == 0)
+            {
+                return null;
+            }
+
+            return userTable.ToList()[0];
+        }
+
+        /// <summary>
+        /// 指定したユーザのデータを取得します。
+        /// </summary>
+        /// <param name="userID">検索するユーザID</param>
+        /// <returns>取得したユーザレコード</returns>
+        public UserModel UserDataOnce(int userID)
+        {
+            IQueryable<UserModel> userTable = from usertable in this.UserModel_tbl where (usertable.ID == userID) select usertable;
+
+            //もし取得したレコードがなければnull
+            if (userTable.ToList().Count == 0)
             {
                 return null;
             }

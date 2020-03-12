@@ -1,4 +1,18 @@
-﻿using FlowManager.Models.FormParam;
+﻿///
+/// ファイル名	: AppFormController.cs
+/// 作成者		: murakami
+/// 制作日		: 2020/3/12
+/// 最終更新者	: なし
+/// 最終更新日	: なし
+///
+/// 更新履歴
+/// 名前			日付		内容
+/// murakami		2020/03/12	新規作成
+///
+
+using FlowManager.Models;
+using FlowManager.Models.DBAccess;
+using FlowManager.Models.FormParam;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +21,10 @@ using System.Web.Mvc;
 
 namespace FlowManager.Controllers
 {
-    public class AppFormController : Controller
+    /// <summary>
+    /// 申請画面のコントローラクラス
+    /// </summary>
+    public class AppFormController : BaseController
     {
         // GET: AppForm
         public ActionResult AppForm()
@@ -20,48 +37,91 @@ namespace FlowManager.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 申請一覧を表示するメソッド
+        /// </summary>
+        /// <returns>申請一覧ページ</returns>
         public ActionResult AppFormList()
         {
+            logger.Debug("Start");
+
+            //役職IDが従業員
+            const int EmployeeID = 5; 
+
+            //自身の情報をDBより取得
+            UserContext userContext = new UserContext();
+            UserModel loginUserModel = userContext.UserDataOnce(SessionUserID());
+
+            //申請情報を取得するためのクラスをインスタンス化
+            SqlContext sqlContext = new SqlContext();
+
+            //自身の役職が従業員の場合
+            if(loginUserModel.ManagerID == EmployeeID)
+            {
+                //自分の起票した申請を取得
+                ViewBag.appFormViewModels = sqlContext.AppFormList(SessionUserID());
+            }
+            //自身の役職が従業員以外の場合
+            else
+            {
+                //全ての申請を取得
+                ViewBag.appFormViewModels = sqlContext.AppFormList();
+            }
+
+            logger.Debug("End");
             return View();
         }
 
         public ActionResult AppFormDetails()
         {
-            AppFormModel model = new AppFormModel();
-            model.ImplementationDate = "2019/11/11";
-            model.FormName = "経費申請";
+            //AppFormViewModel model = new AppFormViewModel();
+            //model.ImplementationDate = "2019/11/11";
+            //model.FormName = "経費申請";
+            /*
             model.contents = "出張に伴う宿泊費の精算";
-            model.ditails = new List<AppFormModel.AppFormDetail>();
-            model.ditails.Add(new AppFormModel.AppFormDetail());
+            model.ditails = new List<AppFormViewModel.AppFormDetail>();
+            model.ditails.Add(new AppFormViewModel.AppFormDetail());
             model.ditails[0].contents = "夕食";
             model.ditails[0].productionAmount = 2000;
-            model.ditails.Add( new AppFormModel.AppFormDetail());
+            model.ditails.Add( new AppFormViewModel.AppFormDetail());
             model.ditails[1].contents = "ホテル代";
             model.ditails[1].productionAmount = 12000;
-
-            return View(model);
+            */
+            return View();
         }
 
         public ActionResult ReAppForm()
         {
-            AppFormModel model = new AppFormModel();
-            model.ImplementationDate = "2019/11/11";
-            model.FormName = "経費申請";
+            //AppFormViewModel model = new AppFormViewModel();
+            //model.ImplementationDate = "2019/11/11";
+            //model.FormName = "経費申請";
+            /*
             model.contents = "出張に伴う宿泊費の精算";
-            model.ditails = new List<AppFormModel.AppFormDetail>();
-            model.ditails.Add(new AppFormModel.AppFormDetail());
+            model.ditails = new List<AppFormViewModel.AppFormDetail>();
+            model.ditails.Add(new AppFormViewModel.AppFormDetail());
             model.ditails[0].contents = "夕食";
             model.ditails[0].productionAmount = 2000;
-            model.ditails.Add(new AppFormModel.AppFormDetail());
+            model.ditails.Add(new AppFormViewModel.AppFormDetail());
             model.ditails[1].contents = "ホテル代";
             model.ditails[1].productionAmount = 12000;
-
-            return View(model);
+            */
+            return View();
         }
 
         public ActionResult AjaxSearch(String s)
         {
             return PartialView("テスト成功");
+        }
+
+        /// <summary>
+        /// セッションよりユーザIDを取得
+        /// </summary>
+        /// <returns>ユーザIDを返します。ない場合はnullを返します。</returns>
+        public int SessionUserID()
+        {
+            logger.Debug("Start");
+            logger.Debug("End");
+            return (int)Session[Session_Id];
         }
     }
 }

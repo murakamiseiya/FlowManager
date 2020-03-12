@@ -1,4 +1,17 @@
-﻿
+﻿@*
+///
+/// ファイル名	: NewAppForm.cshtml
+/// 作成者		: murakami
+/// 制作日		: 2020/3/12
+/// 最終更新者	: なし
+/// 最終更新日	: なし
+///
+/// 更新履歴
+/// 名前			日付		内容
+/// murakami		2020/03/12	新規作成
+///
+*@
+
 @{
     Layout = null;
     ViewBag.Title = "NewAppForm";
@@ -10,13 +23,15 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/AppFormElementTable");
 
-@model FlowManager.Models.FormParam.AppFormModel
+@model FlowManager.Models.FormParam.AppFormViewModel
+
 <br />
 
 @using (Html.BeginForm())
 {
-    <table class="table table-bordered ">
+    <table id="AppFormTable" class="table table-bordered ">
         <tr>
             <th class="col-lg-2 info">@Html.DisplayNameFor(appFormModel => appFormModel.ImplementationDate)</th>
             <td class="col-lg-10 active" colspan="4">@Html.TextBoxFor(appFormModel => appFormModel.ImplementationDate, new { @class = "col-lg-12" })</td>
@@ -39,20 +54,9 @@
             <th class="col-lg-2 info">申請種目</th>
             <th class="col-lg-1 info">削除</th>
         </tr>
-        <tr>
-            <td class="col-lg-9 active" colspan="2">@Html.TextBoxFor(appFormModel => appFormModel.ditails[0].contents, new { @class = "col-lg-12" })</td>
-            <td class="col-lg-1 active">@Html.TextBoxFor(appFormModel => appFormModel.ditails[0].productionAmount, new { @class = "col-lg-12" })</td>
-            <td class="col-lg-2 active"><select class="col-lg-12"><option style="font-size:7px">公共交通機関</option></select></td>
-            <td class="col-lg-1 active"><button>×</button></td>
-        </tr>
-        <tr>
-            <td class="col-lg-9 active" colspan="2">@Html.TextBoxFor(appFormModel => appFormModel.ditails[0].contents, new { @class = "col-lg-12" })</td>
-            <td class="col-lg-1 active">@Html.TextBoxFor(appFormModel => appFormModel.ditails[0].productionAmount, new { @class = "col-lg-12" })</td>
-            <td class="col-lg-2 active"><select class="col-lg-12"><option>飲食代</option></select></td>
-            <td class="col-lg-1 active"><button>×</button></td>
-        </tr>
+
     </table>
-    <button class="col-lg-offset-11">追加</button>
+    <button id="button" class="col-lg-offset-11">追加</button>
 
     <br />
 

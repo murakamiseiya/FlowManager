@@ -9,6 +9,8 @@
 /// 名前			日付		内容
 /// murakami		2020/02/29	新規作成
 ///
+using FlowManager.Models;
+using FlowManager.Models.DBAccess;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -28,9 +30,16 @@ namespace FlowManager.Controllers
 
         #region フィールド
 
-        public const string Session_Id = "Id ";    //Sessionの名前「Id」
+        public const string Session_Id = "UserID ";    //Sessionの名前「UserID」
         public ILog logger; //ロガー
 
+        #endregion
+
+        #region 定数
+        public const String LOGIN_CONTROLLER = "Login";
+        public const String LOGIN_ACTION = "LoginPage";
+        public const String APPFORM_COMMON_CONTROLLER = "AppForm";
+        public const String APPFORM_COMMON_ACTION = "AppForm";
         #endregion
 
         /// <summary>
@@ -50,10 +59,22 @@ namespace FlowManager.Controllers
         protected bool LoginCheck()
         {
             logger.Debug("Start");
+            //セッションの有無を確認します。
             if (Session[Session_Id] == null)
             {
                 //sessionなし
                 logger.Debug("SessionIDなし");
+                logger.Debug("End");
+                return false;
+            }
+
+            //ユーザ確認処理
+            UserContext loginContext = new UserContext();
+            UserModel usermodel = loginContext.UserDataOnce((int)Session[Session_Id]);
+            if ( usermodel == null)
+            {
+                //sessionなし
+                logger.Debug("存在しないユーザ");
                 logger.Debug("End");
                 return false;
             }
@@ -86,7 +107,7 @@ namespace FlowManager.Controllers
                 if (!LoginCheck())
                 {
                     //ログイン画面へリダイレクト
-                    filterContext.Result = RedirectToAction("LoginPage", "Login");
+                    filterContext.Result = RedirectToAction(LOGIN_ACTION, LOGIN_CONTROLLER);
                     logger.Debug("End");
                     return;
                 }

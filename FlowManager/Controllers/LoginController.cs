@@ -45,44 +45,54 @@ namespace FlowManager.Controllers
         /// <returns>表示するページ</returns>
         public ActionResult LoginCheck(UserModel userModel )
         {
-            //入力項目のチェック
-            if (!userModel.LoginCheck())
+
+            logger.Debug("Start");
+            try
             {
-                logger.Info("入力チェック失敗");
-                //ログイン失敗：LoginPageに遷移する
-                return RedirectToAction("LoginPage", "Login");
-            }
+                //入力項目のチェック
+                if (!userModel.LoginCheck())
+                {
+                    logger.Info("入力チェック失敗");
+                    logger.Debug("End");
+                    //ログイン失敗：LoginPageに遷移する
+                    return RedirectToAction(LOGIN_ACTION, LOGIN_CONTROLLER);
+                }
 
-            //テーブルよりレコードを取得
-            LoginContext logintable = new LoginContext();
-            UserModel LoginTableRecode = logintable.UserDataOnce(userModel.UserName);
+                //テーブルよりレコードを取得
+                UserContext logintable = new UserContext();
+                UserModel LoginTableRecode = logintable.UserDataOnce(userModel.UserName);
 
-            //取得できるレコードがなければ
-            if( LoginTableRecode == null)
+                //取得できるレコードがなければ
+                if (LoginTableRecode == null)
+                {
+                    logger.Info("レコード取得失敗");
+                    logger.Debug("End");
+                    //ログイン失敗：LoginPageに遷移する
+                    return RedirectToAction(LOGIN_ACTION, LOGIN_CONTROLLER);
+                }
+
+                //入力されたパスワードが一致していない場合
+                if (!LoginTableRecode.Password.Equals(userModel.Password))
+                {
+                    logger.Info("パスワード不一致");
+                    logger.Debug("End");
+                    //ログイン失敗：LoginPageに遷移する
+                    return RedirectToAction(LOGIN_ACTION, LOGIN_CONTROLLER);
+                }
+
+                //セッションの登録
+                Session[Session_Id] = LoginTableRecode.ID;
+
+
+                //ログイン成功：AppFormに遷移する
+                logger.Info("ログイン成功");
+                logger.Debug("End");
+                return RedirectToAction(APPFORM_COMMON_ACTION, APPFORM_COMMON_CONTROLLER);
+
+            }catch(Exception e)
             {
-                logger.Info("レコード取得失敗");
-                //ログイン失敗：LoginPageに遷移する
-                return RedirectToAction("LoginPage", "Login");
+                throw e;
             }
-
-            //入力されたパスワードが一致していない場合
-            if (!LoginTableRecode.Password.Equals(userModel.Password))
-            {
-                logger.Info("パスワード不一致");
-                //ログイン失敗：LoginPageに遷移する
-                return RedirectToAction("LoginPage", "Login");
-            }
-
-            String Session_ID = "UserID";
-            //セッションの登録
-            Session[Session_ID] = LoginTableRecode.ID;
-
-
-            //ログイン成功：AppFormに遷移する
-            logger.Info("ログイン成功");
-            return RedirectToAction("AppForm", "AppForm");
-
-            
         }
     }
 }

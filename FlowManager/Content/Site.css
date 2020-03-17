@@ -1,4 +1,19 @@
-﻿body {
+﻿/*
+/// ファイル名 : site.css
+/// 作成者 : murakami
+/// 制作日 : 2020/3/11
+/// 最終更新者 : なし
+/// 最終更新日 : なし
+///
+/// 更新履歴
+/// 名前 日付 内容
+/// murakami 2020/03/11 新規作成
+///
+*/
+
+
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -49,6 +64,7 @@ textarea {
 
 /*　サイドバー　全体　*/
 .SideBar {
+    min-height: 500px;
     background-color: rgb( 0, 0, 0 );
 }
 
@@ -57,11 +73,13 @@ textarea {
     color: rgb( 192, 192, 192 );
     font-size:20px ;
 }
-.divButton:hover {
-    color: rgb( 230, 230, 230 );
-    font-size:30px ;
-}
 
 .fontWhite{
     color:white ;
+}
+
+.divScroll {
+    min-height:500px;
+    height:500px;
+    overflow:auto;
 }

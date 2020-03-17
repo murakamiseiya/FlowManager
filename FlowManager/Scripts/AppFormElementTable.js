@@ -10,7 +10,13 @@
 /// murakami		2020/03/12	新規作成
 ///
 
-document.getElementById("button").onclick = function () {
+//テーブル詳細の数をカウント
+var tableIndex = 0;
+
+/// <summary>
+/// 申請詳細の行を１行追加します。
+/// </summary>
+document.getElementById("button_Add").onclick = function () {
     // 表の作成開始
     var rows = [];
     var table = document.getElementById("AppFormTable");
@@ -25,7 +31,7 @@ document.getElementById("button").onclick = function () {
 
     var contents = document.createElement("input");
     contents.setAttribute("type", "text");
-    contents.setAttribute("id", "contents");
+    contents.setAttribute("name", "AppFormDitails[" + tableIndex +"].Contents");
     contents.classList.add("col-lg-12");
 
     cell.appendChild(contents);
@@ -37,11 +43,10 @@ document.getElementById("button").onclick = function () {
 
     var productionAmount = document.createElement("input");
     productionAmount.setAttribute("type", "text");
-    productionAmount.setAttribute("id", "productionAmount");
+    productionAmount.setAttribute("name", "AppFormDitails[" + tableIndex +"].ProductionAmount");
     productionAmount.classList.add("col-lg-12");
 
     cell.appendChild(productionAmount);
-
 
     //申請種目
     cell = rows[0].insertCell(-1);
@@ -49,7 +54,7 @@ document.getElementById("button").onclick = function () {
     cell.classList.add("active");
 
     var AppLine = document.createElement("select");
-    AppLine.setAttribute("id", "AppLine");
+    AppLine.setAttribute("name", "AppFormDitails[" + tableIndex +"].AppLine");
     AppLine.classList.add("col-lg-12");
 
     const optionValue = ["公共交通機関", "自家用車", "飲食代", "その他"];
@@ -72,11 +77,37 @@ document.getElementById("button").onclick = function () {
     deleteButton.setAttribute("onClick", "coldel(this)");
     cell.appendChild(deleteButton);
 
+    //詳細の行の数を増やす
+    tableIndex++;
 }
 
+/// <summary>
+/// 申請詳細の行を１行削除します。
+/// </summary>
 function coldel(obj) {
     // 削除ボタンを押下された行を取得
     tr = obj.parentNode.parentNode;
     // trのインデックスを取得して行を削除する
     tr.parentNode.deleteRow(tr.sectionRowIndex);
+    //詳細の行の数を減らす
+    tableIndex--;
 }
+
+/// <summary>
+/// formの送信処理を行います。
+/// </summary>
+
+document.getElementById("formSubmit").onclick = function () {
+    console.log("formSubmit");
+    $.post("https://localhost:44320/AppForm/SaveNewAppForm", $('form').serialize())
+        .done(function (data, textStatus, jqXHR) {
+            // 成功の場合の処理
+            if (data == "true") {
+                alert("登録成功です。");
+            } else {
+                alert("登録失敗です。");
+            }
+        });
+
+}
+

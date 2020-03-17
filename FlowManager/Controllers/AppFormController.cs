@@ -16,8 +16,11 @@ using FlowManager.Models.FormParam;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace FlowManager.Controllers
 {
@@ -122,6 +125,60 @@ namespace FlowManager.Controllers
             logger.Debug("Start");
             logger.Debug("End");
             return (int)Session[Session_Id];
+        }
+
+        /// <summary>
+        /// 新規申請登録処理
+        /// </summary>
+        public ContentResult SaveNewAppForm()
+        {
+            try
+            {
+                logger.Debug("Start");
+                //申請データ取得
+                AppFormViewModel appForm = new AppFormViewModel();
+                appForm.ImplementationDate = DateTime.Parse(Request.Form.Get("ImplementationDate"));
+                appForm.FormName = Request.Form.Get("FormName");
+                appForm.Contents = Request.Form.Get("Contents");
+                appForm.ditails = new List<AppFormViewModel.AppFormDetail>();
+
+                //申請詳細データ取得
+                for (int i = 0; Request.Form.Get("AppFormDitails[" + i + "].Contents") != null; i++)
+                {
+                    AppFormViewModel.AppFormDetail appFormDetail = new AppFormViewModel.AppFormDetail();
+                    appFormDetail.Contents = Request.Form.Get("AppFormDitails[" + i + "].Contents");
+                    appFormDetail.ProductionAmount = int.Parse(Request.Form.Get("AppFormDitails[" + i + "].ProductionAmount"));
+                    appFormDetail.AppLine = int.Parse(Request.Form.Get("AppFormDitails[" + i + "].AppLine"));
+                    appForm.ditails.Add(appFormDetail);
+
+                }
+
+                //新規登録の入力項目のチェックを行う
+                if (appForm.NewAppFormCheck())
+                {
+                    logger.Debug("End");
+                    return this.Content("false");
+
+                }
+
+                //ユーザIDの設定
+                appForm.UserID = SessionUserID();
+
+                SqlContext sqlContext = new SqlContext();
+                if (!sqlContext.NewAppFormInsert(appForm))
+                {
+                    logger.Debug("End");
+                    return this.Content("false");
+                }
+                logger.Debug("End");
+                return this.Content("true");
+            }
+            catch(Exception e)
+            {
+                logger.Error(e.Message);
+                logger.Debug("End");
+                return this.Content("false");
+            }
         }
     }
 }

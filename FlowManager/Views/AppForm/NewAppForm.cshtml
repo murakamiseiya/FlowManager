@@ -23,13 +23,13 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/bootstrap")
-@Scripts.Render("~/bundles/AppFormElementTable");
+@Scripts.Render("~/bundles/AppFormElementTable")
 
 @model FlowManager.Models.FormParam.AppFormViewModel
 
 <br />
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(new { id = "newAppForm" }))
 {
     <table id="AppFormTable" class="table table-bordered ">
         <tr>
@@ -42,25 +42,25 @@
 
         </tr>
         <tr>
-            <th class="col-lg-2 info">@Html.DisplayNameFor(appFormModel => appFormModel.contents)</th>
-            <td class="col-lg-10 active" colspan="4">@Html.TextAreaFor(appFormModel => appFormModel.contents, new { @class = "col-lg-12" })</td>
+            <th class="col-lg-2 info">@Html.DisplayNameFor(appFormModel => appFormModel.Contents)</th>
+            <td class="col-lg-10 active" colspan="4">@Html.TextAreaFor(appFormModel => appFormModel.Contents, new { @class = "col-lg-12" })</td>
         </tr>
         <tr>
             <th class="text-center info" colspan="5">申請詳細</th>
         </tr>
         <tr>
-            <th class="col-lg-8 text-center info" colspan="2">@Html.DisplayNameFor(appFormModel => appFormModel.ditails[0].contents)</th>
-            <th class="col-lg-1 info">@Html.DisplayNameFor(appFormModel => appFormModel.ditails[0].productionAmount)</th>
+            <th class="col-lg-8 text-center info" colspan="2">@Html.DisplayNameFor(appFormModel => appFormModel.ditails[0].Contents)</th>
+            <th class="col-lg-1 info">@Html.DisplayNameFor(appFormModel => appFormModel.ditails[0].ProductionAmount)</th>
             <th class="col-lg-2 info">申請種目</th>
             <th class="col-lg-1 info">削除</th>
         </tr>
 
     </table>
-    <button id="button" class="col-lg-offset-11">追加</button>
+    <button id="button_Add" type="button" class="col-lg-offset-11">追加</button>
 
     <br />
 
-    <input class="col-lg-offset-5 col-lg-2" type="submit" value="申請する" />
+    <button id="formSubmit" type="button" class="col-lg-offset-5 col-lg-2">申請する</button>
 }
 
 

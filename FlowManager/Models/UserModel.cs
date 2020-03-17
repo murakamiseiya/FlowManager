@@ -20,7 +20,9 @@ using FlowManager.Properties;
 
 namespace FlowManager.Models
 {
-    //ユーザテーブル用モデル
+    /// <summary>
+    /// ユーザデータのモデル
+    /// </summary>
     [Table("User_tbl",Schema = "dbo")]
     public partial class UserModel : BaseModel
     {
@@ -63,18 +65,18 @@ namespace FlowManager.Models
         public bool LoginCheck()
         {
             //ユーザ名のチェック
-            if (!StringLengthCheck(UserName,20,0) ||
-                !StringRequiredCheck(UserName) ||
-                !StringProhidition(UserName) )
+            if (StringLengthCheck(UserName,20,0) ||
+                RequiredCheck(UserName) ||
+                StringProhidition(UserName) )
             {
                 //ユーザ名に異常があった場合
                 return false;
             }
 
             // パスワードのチェック
-            if (!StringLengthCheck(Password, 20, 0) ||
-                !StringRequiredCheck(Password) ||
-                !StringProhidition(Password))
+            if (StringLengthCheck(Password, 20, 0) ||
+                RequiredCheck(Password) ||
+                StringProhidition(Password))
             {
                 //パスワードに異常があった場合
                 return false;

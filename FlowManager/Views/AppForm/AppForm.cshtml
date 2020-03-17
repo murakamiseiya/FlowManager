@@ -1,4 +1,5 @@
-﻿///
+﻿@*
+///
 /// ファイル名	: AppForm.cshtml
 /// 作成者		: murakami
 /// 制作日		: 2020/3/12
@@ -9,7 +10,7 @@
 /// 名前			日付		内容
 /// murakami		2020/03/12	新規作成
 ///
-
+*@
 
 @{
     ViewBag.Title = "AppForm";
@@ -17,11 +18,13 @@
 
 @Scripts.Render("~/bundles/AppFormAjax")
 
-<div class="SideBar col-lg-2 hidden-xs" style="min-height:500px">
+<div class="SideBar col-lg-2 hidden-xs" >
 
     <p class="fontWhite">メニュー</p>
 
     <div class="div-ajaxLoad divButton" data-category="AppFormList">申請一覧</div>
     <div class="div-ajaxLoad divButton" data-category="NewAppForm">新規申請</div>
 </div>
-<div class="result col-lg-9"></div>
+<div class="divScroll">
+    <div class="result col-lg-9"></div>
+</div>
